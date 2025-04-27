@@ -2,35 +2,41 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag, User, Search } from "lucide-react";
 import { useCart } from "./context/CartContext";
-
+import picture from "./img/images.png";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { totalItems } = useCart();
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-[#fff5eb] shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="text-xl font-bold text-pink-500">
-            AnonShop
-          </Link>
+          <Link to="/" className="text-xl font-bold text-pink-500"></Link>
 
           {/* Navigation - Desktop */}
-          <nav className="hidden md:flex space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-pink-500">
+          <nav className="hidden md:flex space-x-8 ">
+            <Link to="/" className="text-[#644632] hover:text-pink-500">
               Home
             </Link>
-            <Link to="/products" className="text-gray-700 hover:text-pink-500">
+            <Link to="/about" className="text-[#644632] hover:text-pink-500">
+              {" "}
+              About{" "}
+            </Link>
+            <Link to="/products" className="text-[#644632] hover:text-pink-500">
               Products
             </Link>
-            <Link to="/blog" className="text-gray-700 hover:text-pink-500">
+            <Link to="/" className="text-xl font-bold text-pink-500">
+              <img src={picture} alt="Logo" className="w-[80px] h-auto" />
+            </Link>
+
+            <Link to="/blog" className="text-[#644632] hover:text-pink-500">
               Blog
             </Link>
-            <Link to="/sell" className="text-gray-700 hover:text-pink-500">
+            <Link to="/sell" className="text-[#644632] hover:text-pink-500">
               Sell
             </Link>
-            <Link to="/ship" className="text-gray-700 hover:text-pink-500">
+            <Link to="/ship" className="text-[#644632] hover:text-pink-500">
               Ship
             </Link>
           </nav>

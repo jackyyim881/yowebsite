@@ -42,19 +42,17 @@ const categories = [
 ];
 const CategoryScroll = () => {
   return (
-    <section className="my-8 px-4 container mx-auto max-w-6xl">
+    <section className="my-8 px-4 container text-center mx-auto max-w-6xl">
       <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
         {categories.map((c) => (
           <div
             key={c.id}
-            className="flex-shrink-0 w-44 bg-white border rounded-md p-4 flex items-center gap-3"
+            className="flex-shrink-0 w-44 bg-[#fff5eb]  rounded-full p-4  items-center gap-3"
           >
-            <img src={c.icon} alt={c.name} className="w-8 h-8" />
             <div>
-              <h3 className="text-sm font-semibold leading-none mb-1">
+              <h3 className="text-sm text-[#644632] font-semibold leading-none mb-1">
                 {c.name}
               </h3>
-              <p className="text-xs text-gray-500">({c.amount})</p>
             </div>
           </div>
         ))}

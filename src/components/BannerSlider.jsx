@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Button } from "./ui/Button";
-import banner1 from "../img/banner-1.jpg";
+import banner1 from "../img2/mental-health.jpg";
 import banner2 from "../img/banner-2.jpg";
 import banner3 from "../img/banner-3.jpg";
 
@@ -57,18 +57,6 @@ export default function BannerSlider() {
               className="w-full h-80 object-cover object-center"
               loading={i === index ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-white/70 flex flex-col justify-center items-start p-8 md:max-w-md gap-2">
-              <span className="text-pink-500 uppercase tracking-wider text-xs font-semibold">
-                {b.subtitle}
-              </span>
-              <h2 className="text-2xl md:text-3xl font-bold leading-tight">
-                {b.title}
-              </h2>
-              <p className="text-sm text-gray-600">
-                starting at <b>${b.price.toFixed(2)}</b>
-              </p>
-              <Button className="mt-2 uppercase text-xs">Shop now</Button>
-            </div>
           </div>
         ))}
       </div>
