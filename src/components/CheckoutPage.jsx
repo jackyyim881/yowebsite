@@ -102,7 +102,7 @@ const CheckoutPage = () => {
           Thank you for your purchase. We've sent a confirmation email with your
           order details.
         </p>
-        <div className="border border-gray-200 rounded-lg p-6 mb-8 text-left">
+        <div className="border  border-gray-200 rounded-lg p-6 mb-8 text-left">
           <h2 className="font-semibold text-lg mb-4">Order Summary</h2>
           <div className="border-b pb-2 mb-2">
             <div className="flex justify-between mb-2">
@@ -125,7 +125,7 @@ const CheckoutPage = () => {
         </div>
         <button
           onClick={() => navigate("/products")}
-          className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full transition"
+          className="px-6 py-3 bg-[#F98D79] hover:bg-pink-600 text-white rounded-full transition"
         >
           Continue Shopping
         </button>
@@ -140,35 +140,30 @@ const CheckoutPage = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div
-              className={`flex flex-col items-center ${
-                currentStep >= 1 ? "text-pink-500" : "text-gray-400"
-              }`}
+              className={`flex flex-col items-center ${currentStep >= 1 ? "text-pink-500" : "text-gray-400"
+                }`}
             >
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
-                  currentStep >= 1 ? "bg-pink-500 text-white" : "bg-gray-200"
-                }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${currentStep >= 1 ? "bg-[#F98D79] text-white" : "bg-gray-200"
+                  }`}
               >
-                <ShoppingBag className="w-5 h-5" />
+                <ShoppingBag className="w-5 h-5 " />
               </div>
               <span className="text-xs font-medium">Cart</span>
             </div>
 
             <div
-              className={`flex-1 h-1 mx-4 ${
-                currentStep >= 2 ? "bg-pink-500" : "bg-gray-200"
-              }`}
+              className={`flex-1 h-1 mx-4 ${currentStep >= 2 ? "bg-[#F98D79]" : "bg-gray-200"
+                }`}
             />
 
             <div
-              className={`flex flex-col items-center ${
-                currentStep >= 2 ? "text-pink-500" : "text-gray-400"
-              }`}
+              className={`flex flex-col items-center ${currentStep >= 2 ? "text-pink-500" : "text-gray-400"
+                }`}
             >
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
-                  currentStep >= 2 ? "bg-pink-500 text-white" : "bg-gray-200"
-                }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${currentStep >= 2 ? "bg-[#F98D79] text-white" : "bg-gray-200"
+                  }`}
               >
                 {currentStep > 2 ? (
                   <Check className="w-5 h-5" />
@@ -180,20 +175,17 @@ const CheckoutPage = () => {
             </div>
 
             <div
-              className={`flex-1 h-1 mx-4 ${
-                currentStep >= 3 ? "bg-pink-500" : "bg-gray-200"
-              }`}
+              className={`flex-1 h-1 mx-4 ${currentStep >= 3 ? "bg-[#F98D79]" : "bg-gray-200"
+                }`}
             />
 
             <div
-              className={`flex flex-col items-center ${
-                currentStep >= 3 ? "text-pink-500" : "text-gray-400"
-              }`}
+              className={`flex flex-col items-center ${currentStep >= 3 ? "text-pink-500" : "text-gray-400"
+                }`}
             >
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
-                  currentStep >= 3 ? "bg-pink-500 text-white" : "bg-gray-200"
-                }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${currentStep >= 3 ? "bg-[#F98D79] text-white" : "bg-gray-200"
+                  }`}
               >
                 {currentStep > 3 ? (
                   <Check className="w-5 h-5" />
@@ -201,7 +193,7 @@ const CheckoutPage = () => {
                   <span>3</span>
                 )}
               </div>
-              <span className="text-xs font-medium">Payment</span>
+              <span className="text-xs  font-medium">Payment</span>
             </div>
           </div>
         </div>
@@ -210,7 +202,7 @@ const CheckoutPage = () => {
           {/* Main checkout form */}
           <div className="md:col-span-3">
             {currentStep === 1 && (
-              <div className="bg-white border rounded-lg p-6">
+              <div className="bg-[#fff5eb] border rounded-lg p-6">
                 <h2 className="text-xl font-semibold mb-4">
                   Review Your Order
                 </h2>
@@ -247,7 +239,7 @@ const CheckoutPage = () => {
                 <div className="flex justify-end">
                   <button
                     onClick={nextStep}
-                    className="flex items-center px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full transition"
+                    className="flex items-center px-6 py-3 bg-[#F98D79] hover:bg-pink-600 text-white rounded-full transition"
                   >
                     Continue to Shipping
                     <ChevronRight className="ml-1 w-4 h-4" />
@@ -257,7 +249,7 @@ const CheckoutPage = () => {
             )}
 
             {currentStep === 2 && (
-              <form className="bg-white border rounded-lg p-6">
+              <form className="bg-[#fff5eb] border rounded-lg p-6">
                 <h2 className="text-xl font-semibold mb-4">
                   Shipping Information
                 </h2>
@@ -458,7 +450,7 @@ const CheckoutPage = () => {
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="flex items-center px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full transition"
+                    className="flex items-center px-6 py-3 bg-[#F98D79] hover:bg-pink-600 text-white rounded-full transition"
                   >
                     Continue to Payment
                     <ChevronRight className="ml-1 w-4 h-4" />
@@ -470,14 +462,14 @@ const CheckoutPage = () => {
             {currentStep === 3 && (
               <form
                 onSubmit={handleSubmit}
-                className="bg-white border rounded-lg p-6"
+                className="bg-[#fff5eb] border rounded-lg p-6"
               >
                 <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
 
                 <div className="flex items-center gap-4 mb-6">
                   <div className="flex-1">
                     <div className="border border-pink-500 bg-pink-50 rounded-lg p-3 flex items-center cursor-pointer">
-                      <div className="w-4 h-4 rounded-full bg-pink-500 border-4 border-white shadow-sm mr-3" />
+                      <div className="w-4 h-4 rounded-full bg-[#F98D79] border-4 border-white shadow-sm mr-3" />
                       <div className="flex-1">Credit Card</div>
                       <div className="flex gap-1">
                         <span className="w-8 h-5 bg-blue-800 rounded"></span>
@@ -643,11 +635,10 @@ const CheckoutPage = () => {
                   <button
                     type="submit"
                     disabled={isProcessing}
-                    className={`flex items-center px-8 py-3 ${
-                      isProcessing
-                        ? "bg-gray-400"
-                        : "bg-pink-500 hover:bg-pink-600"
-                    } text-white rounded-full transition min-w-[160px] justify-center`}
+                    className={`flex items-center px-8 py-3 ${isProcessing
+                      ? "bg-gray-400"
+                      : "bg-[#F98D79] hover:bg-pink-600"
+                      } text-white rounded-full transition min-w-[160px] justify-center`}
                   >
                     {isProcessing ? (
                       <span className="flex items-center">
@@ -689,7 +680,7 @@ const CheckoutPage = () => {
 
           {/* Order summary */}
           <div className="md:col-span-2">
-            <div className="bg-white border rounded-lg p-6 sticky top-6">
+            <div className="bg-[#fff5eb] border rounded-lg p-6 sticky top-6">
               <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
 
               <div className="space-y-2 pb-4 border-b">

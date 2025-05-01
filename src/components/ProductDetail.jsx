@@ -1,40 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ShoppingBag, Heart, Share2, Star, Check } from "lucide-react";
+import { Heart, HomeIcon, Share2 } from "lucide-react";
 import { useCart } from "../context/CartContext";
 
 const ProductDetail = ({ products }) => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
 
-  // 使用购物车上下文
   const { addToCart } = useCart();
 
   useEffect(() => {
-    // 找到匹配ID的产品
     const foundProduct = products.find((p) => p.id.toString() === id);
     setProduct(foundProduct);
     setLoading(false);
   }, [id, products]);
 
-  // 添加到购物车函数
   const handleAddToCart = () => {
     if (product) {
-      addToCart(product, quantity);
+      addToCart(product, 1);
       setIsAdded(true);
-
-      // 3秒后重置添加状态
-      setTimeout(() => {
-        setIsAdded(false);
-      }, 3000);
+      setTimeout(() => setIsAdded(false), 2000);
     }
   };
 
   if (loading) return <div className="text-center py-20">Loading...</div>;
-
   if (!product)
     return (
       <div className="text-center py-20">
@@ -49,136 +40,107 @@ const ProductDetail = ({ products }) => {
     ? product.price - (product.price * product.discount) / 100
     : product.price;
 
-  // WhatsApp share handler
-  const handleShareWhatsApp = () => {
-    const url = window.location.href;
-    const text = `Check out this product: ${
-      product.name
-    } - $${discountedPrice.toFixed(2)}\n${url}`;
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
-    window.open(whatsappUrl, "_blank");
-  };
-
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Product Images */}
-        <div className="md:w-1/2">
-          <div className="aspect-square bg-gray-50 rounded-lg overflow-hidden mb-4">
-            <img
-              src={product.img}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
+    <div className="container mx-auto px-4 py-8 max-w-7xl text-[#7a5522]">
+      {/* Breadcrumbs */}
+      <div className="italic mb-4 text-[#7a5522] text-base">
+        Dress &gt; T-shirt &gt; Price
+      </div>
+      {/* Product Icon Link */}
+      <Link to="/products" className="inline-flex items-center gap-2 mb-6 text-[#7a5522] hover:underline">
+        <HomeIcon className="w-5 h-5" />
+        <span className="text-lg font-medium">All Products</span>
+      </Link>
+      {/* Main Grid Layout */}
+      <div className="mb-8">
+        {/* Images & Actions */}
+        <div className="grid grid-cols-2 grid-rows-[auto_1fr] gap-4">
+          {/* Main Image with Actions */}
+          <div className="bg-[#a97b4c] rounded-lg h-56 flex items-start justify-start p-4 relative">
+            <div className="flex gap-4">
+              <button className="flex items-center text-white hover:opacity-80">
+                <Heart className="w-6 h-6" />
+                <span className="ml-2 text-base italic">Favorite</span>
+              </button>
+              <button className="flex items-center text-white hover:opacity-80">
+                <Share2 className="w-6 h-6" />
+                <span className="ml-2 text-base italic">Share</span>
+              </button>
+            </div>
+          </div>
+          {/* Thumbnails & Next */}
+          <div className="grid grid-cols-[1fr_auto] gap-4 items-center">
+            <div className="bg-[#a97b4c] rounded-lg h-56"></div>
+            {/* Arrow for next thumbnail */}
+            <button className="ml-2 p-2 rounded-full relative right-20 bg-[#7a5522] text-white hover:bg-[#a97b4c] transition">
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
           </div>
         </div>
 
         {/* Product Details */}
-        <div className="md:w-1/2">
-          <h1 className="text-3xl font-semibold mb-2">{product.name}</h1>
-          <div className="flex items-center mb-4">
-            <div className="flex items-center">
-              {Array(5)
-                .fill()
-                .map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-4 h-4 ${
-                      i < Math.floor(product.rating)
-                        ? "text-yellow-400 fill-current"
-                        : "text-gray-300"
-                    }`}
-                  />
-                ))}
-            </div>
-            <span className="ml-2 text-sm text-gray-600">
-              {product.rating} rating
-            </span>
-          </div>
-
+        <div className="flex flex-col justify-between h-full">
+          {/* Product Title & Price */}
           <div className="mb-6">
-            <span className="text-2xl font-bold">
-              ${discountedPrice.toFixed(2)}
-            </span>
-            {product.discount > 0 && (
-              <>
-                <span className="ml-3 text-gray-500 line-through">
-                  ${product.price.toFixed(2)}
-                </span>
-                <span className="ml-2 text-red-500">-{product.discount}%</span>
-              </>
-            )}
-          </div>
-
-          <div className="mb-6">
-            <h2 className="text-sm font-medium mb-2">Description</h2>
-            <p className="text-gray-600">
-              {product.description ||
-                "No description available for this product."}
-            </p>
-          </div>
-
-          <div className="mb-6">
-            <h2 className="text-sm font-medium mb-2">Quantity</h2>
-            <div className="flex items-center">
-              <button
-                className="w-10 h-10 border rounded-l flex items-center justify-center"
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              >
-                -
-              </button>
-              <input
-                type="number"
-                min="1"
-                value={quantity}
-                onChange={(e) =>
-                  setQuantity(Math.max(1, parseInt(e.target.value) || 1))
-                }
-                className="w-16 h-10 border-t border-b text-center"
-              />
-              <button
-                className="w-10 h-10 border rounded-r flex items-center justify-center"
-                onClick={() => setQuantity(quantity + 1)}
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-4">
-            <button
-              className={`flex-1 py-3 px-6 ${
-                isAdded
-                  ? "bg-green-500 hover:bg-green-600"
-                  : "bg-pink-500 hover:bg-pink-600"
-              } text-white rounded-full flex items-center justify-center gap-2 transition-colors`}
-              onClick={handleAddToCart}
-            >
-              {isAdded ? (
+            <h1 className="text-3xl font-semibold mb-2">{product.name}</h1>
+            <div className="flex items-end gap-3">
+              {product.discount ? (
                 <>
-                  <Check className="w-5 h-5" />
-                  Added to Cart
+                  <span className="text-lg text-gray-400 line-through">HK${product.price}</span>
+                  <span className="text-2xl font-bold text-[#7a5522]">HK${discountedPrice}</span>
+                  <span className="ml-2 px-2 py-0.5 bg-pink-100 text-pink-600 rounded text-xs font-semibold">
+                    -{product.discount}%
+                  </span>
                 </>
               ) : (
-                <>
-                  <ShoppingBag className="w-5 h-5" />
-                  Add to Cart
-                </>
+                <span className="text-2xl font-bold text-[#7a5522]">HK${product.price}</span>
               )}
-            </button>
-            <button className="py-3 px-6 border border-gray-300 hover:border-gray-400 rounded-full">
-              <Heart className="w-5 h-5" />
-            </button>
+            </div>
+          </div>
+
+          {/* Product Meta Info */}
+          <div className="mb-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div>
+              <div className=" text-xl text-gray-500">Size</div>
+              <div className="font-medium">{product.size || "XL"}</div>
+            </div>
+            <div>
+              <div className="text-xl text-gray-500">Category</div>
+              <div className="font-medium">{product.category || "Shoes"}</div>
+            </div>
+            <div>
+              <div className=" text-xl text-gray-500">Trading</div>
+              <div className="font-medium">Meet in person</div>
+            </div>
+            <div>
+              <div className="text-xl text-gray-500">Posted</div>
+              <div className="font-medium">{product.postingTime || "Today"}</div>
+            </div>
+          </div>
+
+          {/* Product Description */}
+          {product.description && (
+            <div className="mb-8">
+              <div className="text-base font-semibold mb-1">Description</div>
+              <div className="text-gray-700">{product.description}</div>
+            </div>
+          )}
+          <div className="flex justify-start mt-4">
             <button
-              className="py-3 px-6 border border-gray-300 hover:border-gray-400 rounded-full"
-              onClick={handleShareWhatsApp}
-              title="Share on WhatsApp"
+              className="bg-[#7a5522] text-white px-12 py-2 text-lg italic transition hover:bg-[#a97b4c]"
+              onClick={handleAddToCart}
             >
-              <Share2 className="w-5 h-5" />
-              <span className="sr-only">Share on WhatsApp</span>
+              {isAdded ? "Added to Cart" : "Add to Cart"}
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Similar Product */}
+      <div className="mt-8 italic text-lg border-t border-[#c9d8b7] pt-4">
+        Similar Product
       </div>
     </div>
   );

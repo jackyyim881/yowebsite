@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import Switch from '@mui/material/Switch';
+import { FormControlLabel } from "@mui/material";
 const categories = [
   "Tops",
   "Bottoms",
@@ -29,6 +30,8 @@ const SellEdit = () => {
     deliveryGoods: false,
     payment: "",
   });
+
+  const label = { inputProps: { "Caveat": "Switch demo" } };
 
   const handleImageChange = (idx, e) => {
     const file = e.target.files[0];
@@ -111,8 +114,7 @@ const SellEdit = () => {
 
         <hr />
 
-        {/* Product Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-[Caveat]">
           <div>
             <label className="block font-medium mb-1">
               Product Name<span className="text-red-500">*</span>
@@ -122,7 +124,7 @@ const SellEdit = () => {
               value={form.name}
               onChange={handleFormChange}
               required
-              className="w-full rounded-full px-4 py-2 bg-[#e3efef] border-none"
+              className="w-full rounded-full px-4 py-2 bg-[#e3efef] border-none font-[Caveat]"
               placeholder="Product Name"
             />
 
@@ -134,7 +136,7 @@ const SellEdit = () => {
               value={form.description}
               onChange={handleFormChange}
               rows={5}
-              className="w-full rounded-xl px-4 py-2 bg-[#e3efef] border-none"
+              className="w-full rounded-xl px-4 py-2 bg-[#e3efef] border-none font-[Caveat]"
               placeholder="Describe your product"
             />
           </div>
@@ -149,7 +151,7 @@ const SellEdit = () => {
                   value={form.size}
                   onChange={handleFormChange}
                   required
-                  className="rounded-full px-4 py-2 bg-[#e3efef] border-none"
+                  className="rounded-full px-4 py-2 bg-[#e3efef] border-none font-[Caveat]"
                 >
                   <option value="">Select</option>
                   {sizes.map((s) => (
@@ -166,7 +168,7 @@ const SellEdit = () => {
                   value={form.color}
                   onChange={handleFormChange}
                   required
-                  className="rounded-full px-4 py-2 bg-[#e3efef] border-none"
+                  className="rounded-full px-4 py-2 bg-[#e3efef] border-none font-[Caveat]"
                 >
                   <option value="">Select</option>
                   {colors.map((c) => (
@@ -180,7 +182,7 @@ const SellEdit = () => {
                   name="texture"
                   value={form.texture}
                   onChange={handleFormChange}
-                  className="rounded-full px-4 py-2 bg-[#e3efef] border-none"
+                  className="rounded-full px-4 py-2 bg-[#e3efef] border-none font-[Caveat]"
                 >
                   <option value="">Select</option>
                   {textures.map((t) => (
@@ -199,7 +201,7 @@ const SellEdit = () => {
                   value={form.price}
                   onChange={handleFormChange}
                   required
-                  className="rounded-full px-4 py-2 bg-[#e3efef] border-none"
+                  className="rounded-full px-4 py-2 bg-[#e3efef] border-none font-[Caveat]"
                   placeholder="HK$"
                   type="number"
                   min="0"
@@ -208,42 +210,69 @@ const SellEdit = () => {
               <div>
                 <label className="block font-medium mb-1">New ----- Old</label>
                 <div className="flex gap-1 mt-1">
-                  {[1, 2, 3, 4, 5].map((v) => (
-                    <button
-                      type="button"
-                      key={v}
-                      className={`w-6 h-6 rounded-full border-2 ${
-                        form.condition === v
-                          ? "bg-[#e3efef] border-[#a97b4c]"
-                          : "border-gray-300"
-                      }`}
-                      onClick={() => handleConditionChange(v)}
-                    />
-                  ))}
+                  {[
+                    "bg-[#a8e6cf]", // 1 - green
+                    "bg-[#dcedc1]", // 2 - light green
+                    "bg-[#ffd3b6]", // 3 - orange
+                    "bg-[#ffaaa5]", // 4 - pink
+                    "bg-[#ff8b94]", // 5 - red
+                  ].map((color, idx) => {
+                    const v = idx + 1;
+                    return (
+                      <button
+                        type="button"
+                        key={v}
+                        className={`w-6 h-6 rounded-full border-2 font-[Caveat] ${form.condition === v
+                          ? `${color} border-[#a97b4c]`
+                          : "border-gray-300 bg-[#e3efef]"
+                          }`}
+                        onClick={() => handleConditionChange(v)}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             </div>
             <div>
               <label className="block font-medium mb-1">Delivery Method</label>
-              <div className="flex gap-4">
-                <label className="flex items-center gap-2 bg-[#e3efef] px-3 py-2 rounded-lg">
-                  <input
-                    type="checkbox"
-                    name="deliveryInPerson"
-                    checked={form.deliveryInPerson}
-                    onChange={handleFormChange}
-                  />
-                  Trade in person
-                </label>
-                <label className="flex items-center gap-2 bg-[#e3efef] px-3 py-2 rounded-lg">
-                  <input
-                    type="checkbox"
-                    name="deliveryGoods"
-                    checked={form.deliveryGoods}
-                    onChange={handleFormChange}
-                  />
-                  Deliver goods
-                </label>
+              <div className="flex gap-4 flex-col bg-[#e3efef] rounded-lg">
+                <FormControlLabel
+                  control={
+                    <Switch
+                      name="deliveryInPerson"
+                      checked={form.deliveryInPerson}
+                      onChange={handleFormChange}
+                      color="secondary"
+                      sx={{ "& .MuiSwitch-thumb": { backgroundColor: "#a97b4c" } }}
+                    />
+
+                  }
+                  label="Trade in person"
+                  className=" px-3 py-2  rounded-lg cursor-pointer font-[Caveat]"
+                />
+                <FormControlLabel
+                  control={
+                    <Switch
+                      name="deliveryGoods"
+                      checked={form.deliveryGoods}
+                      onChange={handleFormChange}
+                      color="secondary"
+                      className=""
+                      sx={{
+                        '& .MuiSwitch-thumb': { backgroundColor: "#a97b4c" },
+                        fontFamily: "'Caveat', cursive"
+                      }}
+                    />
+                  }
+                  sx={{
+                    fontFamily: "'Caveat', cursive",
+                    bgcolor: "",
+                    px: 1.5,
+                    cursor: "pointer"
+                  }}
+                  label="Delivery goods"
+                />
+
               </div>
             </div>
           </div>
@@ -258,11 +287,10 @@ const SellEdit = () => {
             {["Visa", "Master", "Alipay", "ApplePay"].map((pay, idx) => (
               <label
                 key={pay}
-                className={`w-16 h-16 rounded-lg flex items-center justify-center bg-[#e3efef] cursor-pointer border-2 ${
-                  form.payment === pay
-                    ? "border-[#a97b4c]"
-                    : "border-transparent"
-                }`}
+                className={`w-16 h-16 rounded-lg flex items-center justify-center bg-[#e3efef] cursor-pointer border-2 ${form.payment === pay
+                  ? "border-[#a97b4c]"
+                  : "border-transparent"
+                  }`}
               >
                 <input
                   type="radio"

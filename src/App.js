@@ -1,9 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
-import NewsletterModal from "./NewsletterModal";
-import NotificationToast from "./NotificationToast";
-// Remove this import: import { Route } from "lucide-react";
 import Home from "./components/Home";
 import BlogSection from "./components/BlogSection";
 import ShipSection from "./components/ShipSection";
@@ -58,7 +55,6 @@ export default function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
-
         <Footer />
       </div>
     </CartProvider>

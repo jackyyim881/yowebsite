@@ -31,13 +31,48 @@ const shipCards = [
 
 export default function ShipSection() {
   return (
-    <section id="ship" className="py-16">
+    <section
+      id="ship"
+      className="py-16"
+      style={{ backgroundColor: "#fff5eb" }}
+    >
       <div className="max-w-6xl mx-auto px-4">
         {/* Banner */}
-        <div className="bg-gradient-to-r from-blue-700 to-blue-500 text-white text-center py-12 rounded-lg mb-12">
-          <h1 className="text-3xl font-bold mb-2">Fast & Reliable Shipping</h1>
-          <p>
-            At Anon we make sure every order reaches you quickly and safely.
+        <div
+          className="text-white text-center py-12 rounded-lg mb-12"
+          style={{
+            background: "linear-gradient(90deg, #bedcdc 0%, #b8c8a0 100%)",
+            color: "#644632",
+          }}
+        >
+          <h1
+            className="text-3xl font-bold mb-2"
+            style={{ color: "#644632" }}
+          >
+            <span
+              style={{
+                backgroundColor: "",
+                borderRadius: "0.5rem",
+                padding: "0 0.5rem",
+                color: "#644632",
+              }}
+            >
+              Fast & Reliable Shipping
+            </span>
+          </h1>
+          <p style={{ color: "#644632" }}>
+            At
+            <span
+              style={{
+                backgroundColor: "",
+                borderRadius: "0.25rem",
+                padding: "0 0.3rem",
+                color: "#644632",
+              }}
+            >
+              Anon
+            </span>{" "}
+            we make sure every order reaches you quickly and safely.
           </p>
         </div>
 
@@ -46,25 +81,50 @@ export default function ShipSection() {
           {shipCards.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
-              className="bg-white p-6 text-center rounded-lg shadow hover:shadow-lg transition"
+              className="p-6 text-center rounded-lg shadow hover:shadow-lg transition"
+              style={{
+                backgroundColor: "#bedcdc",
+                color: "#644632",
+                border: "1px solid #b8c8a0",
+              }}
             >
-              <Icon className="w-10 h-10 mx-auto text-blue-600 mb-4" />
-              <h3 className="font-semibold mb-2">{title}</h3>
-              <p className="text-sm text-gray-600">{desc}</p>
+              <Icon className="w-10 h-10 mx-auto mb-4" color="black" />
+              <h3
+                className="font-semibold mb-2"
+                style={{ color: "#644632" }}
+              >
+                {title}
+              </h3>
+              <p className="text-sm" style={{ color: "#644632" }}>
+                {desc}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Shipping calculator */}
-        <div className="bg-gray-50 p-8 rounded-lg mb-12">
-          <h2 className="text-xl font-semibold mb-4">Estimate Shipping Cost</h2>
+        <div
+          className="p-8 rounded-lg mb-12"
+          style={{ backgroundColor: "#ffc3c3" }}
+        >
+          <h2
+            className="text-xl font-semibold mb-4"
+            style={{ color: "#644632" }}
+          >
+            Estimate Shipping Cost
+          </h2>
           <form
             className="grid sm:grid-cols-[1fr_1fr_auto] gap-4"
             onSubmit={(e) => e.preventDefault()}
           >
             <select
               defaultValue="usa"
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border rounded px-3 py-2 focus:outline-none"
+              style={{
+                borderColor: "#b8c8a0",
+                backgroundColor: "#fff5eb",
+                color: "#644632",
+              }}
             >
               <option value="usa">United States</option>
               <option value="canada">Canada</option>
@@ -73,11 +133,21 @@ export default function ShipSection() {
             </select>
             <input
               placeholder="Zip / Postal Code"
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border rounded px-3 py-2 focus:outline-none"
+              style={{
+                borderColor: "#b8c8a0",
+                backgroundColor: "#fff5eb",
+                color: "#644632",
+              }}
             />
             <button
               type="button"
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium shadow transition-colors"
+              style={{
+                backgroundColor: "#b8c8a0",
+                color: "#644632",
+                border: "1px solid #644632",
+              }}
             >
               Calculate
             </button>
@@ -86,7 +156,12 @@ export default function ShipSection() {
 
         {/* FAQ */}
         <div>
-          <h2 className="text-xl font-semibold mb-6">FAQ</h2>
+          <h2
+            className="text-xl font-semibold mb-6"
+            style={{ color: "#644632" }}
+          >
+            FAQ
+          </h2>
           {[
             [
               "How can I track my package?",
@@ -105,9 +180,26 @@ export default function ShipSection() {
               "By weight, method and destination.",
             ],
           ].map(([q, a]) => (
-            <div key={q} className="border-b py-4">
-              <p className="font-semibold mb-2">{q}</p>
-              <p className="text-sm text-gray-600">{a}</p>
+            <div
+              key={q}
+              className="border-b py-4"
+              style={{ borderColor: "#b8c8a0" }}
+            >
+              <p
+                className="font-semibold mb-2"
+                style={{
+                  color: "#644632",
+                  backgroundColor: "",
+                  display: "inline-block",
+                  borderRadius: "0.25rem",
+                  padding: "0 0.4rem",
+                }}
+              >
+                {q}
+              </p>
+              <p className="text-sm" style={{ color: "#644632" }}>
+                {a}
+              </p>
             </div>
           ))}
         </div>
