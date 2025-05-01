@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Button } from "./ui/Button";
-import banner1 from "../img2/mental-health.jpg";
+import banner1 from "../img2/img2.png";
 import banner2 from "../img/banner-2.jpg";
 import banner3 from "../img/banner-3.jpg";
 
@@ -46,15 +46,14 @@ export default function BannerSlider() {
         {BANNERS.map((b, i) => (
           <div
             key={b.id}
-            className={`absolute inset-0 transition-opacity duration-700 ${
-              i === index ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-700 ${i === index ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
             aria-hidden={i !== index}
           >
             <img
               src={b.img}
               alt={b.title}
-              className="w-full h-80 object-cover object-center"
+              className="w-full h-full object-fill  object-center"
               loading={i === index ? "eager" : "lazy"}
             />
           </div>

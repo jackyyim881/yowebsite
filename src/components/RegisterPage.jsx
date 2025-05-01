@@ -43,18 +43,18 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#fff5eb] flex items-center justify-center p-4">
       <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2 text-center">
+        <h2 className="text-2xl font-bold text-[#644632] mb-2 text-center">
           Create Your Account
         </h2>
-        <p className="text-sm text-gray-500 mb-6 text-center">
+        <p className="text-sm text-[#644632] mb-6 text-center">
           Join us and start shopping today!
         </p>
         <form onSubmit={handleSubmit} noValidate>
           {/* Name */}
           <div className="mb-4">
-            <label className="flex items-center text-gray-700 mb-1">
+            <label className="flex items-center text-[#644632] mb-1">
               <FaUser className="mr-2" /> Name
             </label>
             <input
@@ -62,18 +62,17 @@ export default function RegisterPage() {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none ${
-                errors.name ? "border-red-500" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#b8c8a0] ${errors.name ? "border-[#ffc3c3]" : "border-[#bedcdc]"
+                }`}
             />
             {errors.name && (
-              <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+              <p className="text-[#ffc3c3] text-xs mt-1">{errors.name}</p>
             )}
           </div>
 
           {/* Email */}
           <div className="mb-4">
-            <label className="flex items-center text-gray-700 mb-1">
+            <label className="flex items-center text-[#644632] mb-1">
               <FaEnvelope className="mr-2" /> Email
             </label>
             <input
@@ -81,18 +80,17 @@ export default function RegisterPage() {
               name="email"
               value={form.email}
               onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none ${
-                errors.email ? "border-red-500" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#b8c8a0] ${errors.email ? "border-[#ffc3c3]" : "border-[#bedcdc]"
+                }`}
             />
             {errors.email && (
-              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              <p className="text-[#ffc3c3] text-xs mt-1">{errors.email}</p>
             )}
           </div>
 
           {/* Password */}
           <div className="mb-4 relative">
-            <label className="flex items-center text-gray-700 mb-1">
+            <label className="flex items-center text-[#644632] mb-1">
               <FaLock className="mr-2" /> Password
             </label>
             <input
@@ -100,26 +98,25 @@ export default function RegisterPage() {
               name="password"
               value={form.password}
               onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none ${
-                errors.password ? "border-red-500" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#b8c8a0] ${errors.password ? "border-[#ffc3c3]" : "border-[#bedcdc]"
+                }`}
             />
             <button
               type="button"
               onClick={() => setShowPassword((s) => !s)}
-              className="absolute right-3 top-10 text-gray-500"
+              className="absolute right-3 top-10 text-[#644632]"
               tabIndex={-1}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
             {errors.password && (
-              <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+              <p className="text-[#ffc3c3] text-xs mt-1">{errors.password}</p>
             )}
           </div>
 
           {/* Confirm */}
           <div className="mb-4">
-            <label className="flex items-center text-gray-700 mb-1">
+            <label className="flex items-center text-[#644632] mb-1">
               <FaLock className="mr-2" /> Confirm Password
             </label>
             <input
@@ -127,12 +124,11 @@ export default function RegisterPage() {
               name="confirm"
               value={form.confirm}
               onChange={handleChange}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none ${
-                errors.confirm ? "border-red-500" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#b8c8a0] ${errors.confirm ? "border-[#ffc3c3]" : "border-[#bedcdc]"
+                }`}
             />
             {errors.confirm && (
-              <p className="text-red-500 text-xs mt-1">{errors.confirm}</p>
+              <p className="text-[#ffc3c3] text-xs mt-1">{errors.confirm}</p>
             )}
           </div>
 
@@ -143,30 +139,30 @@ export default function RegisterPage() {
               name="terms"
               checked={form.terms}
               onChange={handleChange}
-              className="mr-2"
+              className="mr-2 accent-[#b8c8a0]"
             />
-            <label className="text-sm text-gray-600">
+            <label className="text-sm text-[#644632]">
               I agree to the{" "}
-              <a href="#" className="text-indigo-600 hover:underline">
+              <a href="#" className="text-[#b8c8a0] hover:underline">
                 Terms & Conditions
               </a>
             </label>
           </div>
           {errors.terms && (
-            <p className="text-red-500 text-xs mb-4">{errors.terms}</p>
+            <p className="text-[#ffc3c3] text-xs mb-4">{errors.terms}</p>
           )}
 
           <button
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg font-semibold transition"
+            className="w-full bg-[#b8c8a0] hover:bg-[#a6b78e] text-white py-2 rounded-lg font-semibold transition"
           >
             Register
           </button>
         </form>
 
-        <p className="text-center text-sm text-gray-500 mt-4">
+        <p className="text-center text-sm text-[#644632] mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-indigo-600 hover:underline">
+          <a href="/login" className="text-[#b8c8a0] hover:underline">
             Sign in
           </a>
         </p>

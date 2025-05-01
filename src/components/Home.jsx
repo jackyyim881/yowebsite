@@ -1,18 +1,36 @@
 import BannerSlider from "./BannerSlider";
 import CategoryScroll from "./CategoryScroll";
-import ProductSection from "./ProductSection";
-import Sidebar from "./Sidebar";
-import { products } from "../data";
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import img1 from "../img2/img1.png";
 import img2 from "../img2/img2.png";
 import img3 from "../img2/img3.png";
 import img4 from "../img2/cloth.png";
+import img7 from "../img2/mental-health.jpg";
+import avatar1 from "../img2/avatars/avatar1.jpg";
+import avatar2 from "../img2/avatars/avatar2.jpg";
+import avatar3 from "../img2/avatars/avatar3.jpg";
 import img5 from "../img2/cloth2.png";
 import img6 from "../img2/cloth3.png";
 // Create a Home component for your main landing page
 export default function Home() {
-  const topProducts = products.slice(0, 4);
-
+  // A reusable star rating component
+  const StarRating = ({ rating }) => {
+    return (
+      <div className="flex justify-center mt-2 text-[#e6a94e]">
+        {[...Array(5)].map((_, i) => {
+          const roundedRating = Math.round(rating * 2) / 2;
+          if (roundedRating - i >= 1) {
+            return <FaStar key={i} />;
+          } else if (roundedRating - i === 0.5) {
+            return <FaStarHalfAlt key={i} />;
+          } else {
+            return <FaRegStar key={i} />;
+          }
+        })}
+        <span className="text-xs text-[#6c5b4c] ml-2 mt-1">{rating}/5</span>
+      </div>
+    );
+  };
   return (
     <div className="gap-8 px-2 md:px-0 text-[#6c5b4c] max-w-7xl mx-auto w-full">
       <div className="md:col-span-4">
@@ -23,7 +41,7 @@ export default function Home() {
       <div className="grid grid-cols-2 w-full md:col-span-4">
         <div className="bg-beige p-4 ">
           <img
-            src={img2}
+            src={img7}
             alt="What's your fashion personality?"
             className="w-[100%] h-[100%] object-fill shadow-sm"
           />
@@ -131,57 +149,90 @@ export default function Home() {
       </div>
 
       {/* Product section with 3-column grid layout */}
-      <section className="py-16">
-        {/* 標題 */}
-        <h2 className="text-3xl font-semibold text-center mb-12 text-[#6c5b4c] italic">
+      <section className="py-12 md:py-16">
+        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8 md:mb-12 text-[#6c5b4c] italic">
           Recommend
         </h2>
 
-        {/* 卡片容器 */}
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-          {/* 卡片 1 */}
+        {/* Responsive card grid with better spacing for mobile */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 px-4">
+          {/* Card 1 - With profile image */}
           <div className="relative flex flex-col items-center">
-            {/* 頭像 */}
-            <div className="absolute -top-2 w-16 h-16 bg-white rounded-full border-2  border-brown-500 flex items-center justify-center">
-              {/* 這裡可以放你的圖片或icon */}
+            {/* Profile image */}
+            <div className="absolute -top-10 w-20 h-20 rounded-full border-4 border-[#c9d8b7] bg-white shadow-md z-10">
               <img
-                src="/path-to-avatar1.png"
-                alt="avatar"
-                className="w-8 h-8 object-cover"
+                src={avatar1}
+                alt="Eric profile"
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
 
-            {/* 卡片本體 */}
-            <div className="mt-8 w-full bg-[#c9d8b7] rounded-lg flex items-center justify-center h-32">
-              <span className="text-white text-lg italic">Photo</span>
+            <div className=" w-full bg-gradient-to-br from-[#c9d8b7] to-[#d8e9e9] rounded-xl shadow-md p-4 pt-8">
+              <h3 className="text-[#644632] font-medium text-lg text-center mt-2">Eric's Pick</h3>
+              <p className="text-[#6c5b4c] text-center text-sm mt-1">Sustainable fashion specialist</p>
+
+              {/* Star rating */}
+              <div className="flex justify-center mt-2 text-[#e6a94e]">
+                <StarRating rating={4.5} />
+              </div>
+
+              <div className="mt-4 bg-white/80 rounded-lg p-3 shadow-sm">
+                <p className="text-sm text-[#644632] italic">"The perfect balance of comfort and style, this piece is a must-have for any wardrobe."</p>
+              </div>
             </div>
           </div>
 
-          {/* 卡片 2 */}
+          {/* Card 2 - With profile image */}
           <div className="relative flex flex-col items-center">
-            <div className="absolute -top-2 w-16 h-16 bg-white rounded-full border-2  border-brown-500 flex items-center justify-center">
+            {/* Profile image */}
+            <div className="absolute -top-10 w-20 h-20 rounded-full border-4 border-[#c9d8b7] bg-white shadow-md z-10">
               <img
-                src="/path-to-avatar2.png"
-                alt="avatar"
-                className="w-8 h-8 object-cover"
+                src={avatar2}
+                alt="Alex profile"
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
-            <div className="mt-8 w-full bg-[#c9d8b7] rounded-lg flex items-center justify-center h-32">
-              <span className="text-white text-lg italic">Photo</span>
+
+            <div className=" w-full bg-gradient-to-br from-[#c9d8b7] to-[#d8e9e9] rounded-xl shadow-md p-4 pt-8">
+              <h3 className="text-[#644632] font-medium text-lg text-center mt-2">Alex's Choice</h3>
+              <p className="text-[#6c5b4c] text-center text-sm mt-1">Personal stylist</p>
+
+              {/* Star rating */}
+              <div className="flex justify-center mt-2 text-[#e6a94e]">
+                <StarRating rating={4.5} />
+
+              </div>
+
+              <div className="mt-4 bg-white/80 rounded-lg p-3 shadow-sm">
+                <p className="text-sm text-[#644632] italic">"Versatile and timeless, this design works for both casual and semi-formal occasions."</p>
+              </div>
             </div>
           </div>
 
-          {/* 卡片 3 */}
+          {/* Card 3 - With profile image */}
           <div className="relative flex flex-col items-center">
-            <div className="absolute -top-2 w-16 h-16 bg-white rounded-full border-2  border-brown-500 flex items-center justify-center">
+            {/* Profile image */}
+            <div className="absolute -top-10 w-20 h-20 rounded-full border-4 border-[#c9d8b7] bg-white shadow-md z-10">
               <img
-                src="/path-to-avatar3.png"
-                alt="avatar"
-                className="w-8 h-8 object-cover"
+                src={avatar3}
+                alt="Emma profile"
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
-            <div className="mt-8 w-full bg-[#c9d8b7] rounded-lg flex items-center justify-center h-32">
-              <span className="text-white text-lg italic">Photo</span>
+
+            <div className=" w-full bg-gradient-to-br from-[#c9d8b7] to-[#d8e9e9] rounded-xl shadow-md p-4 pt-8">
+              <h3 className="text-[#644632] font-medium text-lg text-center mt-2">Emma's Favorite</h3>
+              <p className="text-[#6c5b4c] text-center text-sm mt-1">Fashion blogger</p>
+
+              {/* Star rating */}
+              <div className="flex justify-center mt-2 text-[#e6a94e]">
+                <StarRating rating={4.5} />
+
+              </div>
+
+              <div className="mt-4 bg-white/80 rounded-lg p-3 shadow-sm">
+                <p className="text-sm text-[#644632] italic">"I love how this piece can be layered in so many different ways for any season."</p>
+              </div>
             </div>
           </div>
         </div>

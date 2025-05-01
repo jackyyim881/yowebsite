@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { FiHeart, FiSearch, FiShoppingCart } from "react-icons/fi";
+import { importAllImages } from "../utils/importAllImages";
+
+
 
 const categories = [
   {
@@ -31,7 +34,27 @@ const ProductSection = () => {
   });
   const [cartPopup, setCartPopup] = useState(Array(8).fill(false));
   const [openCategory, setOpenCategory] = useState(null);
+  const accessoriesImages = importAllImages(require.context('../img/Accessories', false, /\.(png|jpe?g|svg)$/));
+  const bagsImages = importAllImages(require.context('../img/Bags', false, /\.(png|jpe?g|svg)$/));
+  const bottomsImages = importAllImages(require.context('../img/Bottoms', false, /\.(png|jpe?g|svg)$/));
+  const iconsImages = importAllImages(require.context('../img/icons', false, /\.(png|jpe?g|svg)$/));
+  const logoImages = importAllImages(require.context('../img/logo', false, /\.(png|jpe?g|svg)$/));
+  const outerwearImages = importAllImages(require.context('../img/Outerwear', false, /\.(png|jpe?g|svg)$/));
+  const setsImages = importAllImages(require.context('../img/Sets', false, /\.(png|jpe?g|svg)$/));
+  const shoesImages = importAllImages(require.context('../img/Shoes', false, /\.(png|jpe?g|svg)$/));
+  const topImages = importAllImages(require.context('../img/top', false, /\.(png|jpe?g|svg)$/));
 
+  const allImages = [
+    ...accessoriesImages,
+    ...bagsImages,
+    ...bottomsImages,
+    ...iconsImages,
+    ...logoImages,
+    ...outerwearImages,
+    ...setsImages,
+    ...shoesImages,
+    ...topImages,
+  ];
   // Sample product data to match the image
   const products = [
     { id: 1, name: "White Shoes", price: "HK$ 200", isFavorite: false },
@@ -60,6 +83,14 @@ const ProductSection = () => {
   return (
     <section className="my-8">
       <div className="container mx-auto text-[#644632] px-4 max-w-7xl">
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          {allImages.map((imgSrc, idx) => (
+            <div key={idx} className="relative">
+              <img src={imgSrc} alt={`Product ${idx + 1}`} className="w-full h-48 object-cover rounded-lg mb-2" />
+            </div>
+          ))}
+        </div>
         {/* Tag list */}
         <div className="flex gap-6 mb-6 items-center">
           <div className="flex gap-6 mb-6 items-center">

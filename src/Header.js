@@ -23,7 +23,7 @@ export default function Header() {
               {" "}
               About{" "}
             </Link>
-            <Link to="/products" className="text-[#644632] hover:text-pink-500">
+            <Link to="/product" className="text-[#644632] hover:text-pink-500">
               Products
             </Link>
             <Link to="/" className="text-xl font-bold text-pink-500">

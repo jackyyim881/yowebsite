@@ -12,3 +12,32 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Custom horizontal scrollbar for category scroll */
+
+
+@supports (scrollbar-color: auto) {
+  .scroll-box {
+    scrollbar-color: cornflowerblue aquamarine;
+    scrollbar-width: thin;
+  }
+}
+
+@supports selector(::-webkit-scrollbar) {
+  .scroll-box::-webkit-scrollbar {
+    height: 4px;
+    background: cornflowerblue;
+  }
+  .scroll-box::-webkit-scrollbar-thumb {
+    background: aquamarine;
+    border-radius: 8px;
+    border: 2px solid cornflowerblue;
+  }
+  .scroll-box::-webkit-scrollbar-thumb:hover {
+    background: #7fffd4; /* aquamarine hover */
+  }
+  .scroll-box::-webkit-scrollbar-track {
+    background: cornflowerblue;
+    border-radius: 8px;
+  }
+}

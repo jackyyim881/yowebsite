@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const categories = [
   {
@@ -40,19 +40,26 @@ const categories = [
     icon: "./img/icons/hat.svg",
   },
 ];
+
 const CategoryScroll = () => {
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  const handleCategoryClick = (id) => {
+    setActiveCategory(id);
+    // Add any additional logic for category selection here
+  };
+
   return (
     <section className="my-8 px-4 container text-center mx-auto max-w-6xl">
-      <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
+      <div className="flex gap-4 overflow-x-auto pb-2 scroll-box">
         {categories.map((c) => (
           <div
             key={c.id}
-            className="flex-shrink-0 w-44 bg-[#fff5eb]  rounded-full p-4  items-center gap-3"
+            onClick={() => handleCategoryClick(c.id)}
+            className={`flex-shrink-0 mt-10 scroll-smooth w-44 bg-[#fff5eb] rounded-full p-4 items-center gap-3 cursor-pointer transition-transform transform hover:scale-105 ${activeCategory === c.id ? "border-2 border-[#644632]" : ""}`}
           >
-            <div>
-              <h3 className="text-sm text-[#644632] font-semibold leading-none mb-1">
-                {c.name}
-              </h3>
+            <div className="flex flex-col items-center">
+              <h3 className="text-sm text-[#644632] font-semibold leading-none mb-1">{c.name}</h3>
             </div>
           </div>
         ))}
