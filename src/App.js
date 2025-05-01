@@ -4,8 +4,7 @@ import Header from "./Header";
 import Home from "./components/Home";
 import BlogSection from "./components/BlogSection";
 import ShipSection from "./components/ShipSection";
-import ProductSection from "./components/ProductSection";
-import ProductDetail from "./components/ProductDetail";
+
 import CartPage from "./components/CartPage";
 import NotFoundPage from "./components/NotFoundPage";
 import CheckoutPage from "./components/CheckoutPage";
@@ -35,10 +34,7 @@ export default function App() {
               path="/blog/:id"
               element={<BlogDetail blogs={blogPosts} />}
             />
-            <Route
-              path="/sell"
-              element={<ProductSection title="Sell" products={products} />}
-            />
+            
             <Route path="/ship" element={<ShipSection />} />
 
             <Route path="/about" element={<AboutSection title="About Us" />} />

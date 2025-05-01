@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center text-xs text-[#fff5eb] mt-8">
-        © {new Date().getFullYear()} Anon – All rights reserved.
+        © {new Date().getFullYear()} UNFILTERED – All rights reserved.
       </div>
     </footer>
   );

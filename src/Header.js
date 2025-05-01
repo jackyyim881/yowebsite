@@ -33,9 +33,6 @@ export default function Header() {
             <Link to="/blog" className="text-[#644632] hover:text-pink-500">
               Blog
             </Link>
-            <Link to="/sell" className="text-[#644632] hover:text-pink-500">
-              Sell
-            </Link>
             <Link to="/ship" className="text-[#644632] hover:text-pink-500">
               Ship
             </Link>

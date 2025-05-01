@@ -1,10 +1,3 @@
-import blog1 from './img/blog/blog1.png';
-import blog2 from './img/blog/2.png';
-import blog3 from './img/blog/3.png';
-import blog4 from './img/blog/4.png';
-import blog5 from './img/blog/5.png';
-
-
 export const products = [
   // Clothing Products
   {
@@ -382,46 +375,41 @@ export const products = [
 export const blogPosts = [
   {
     id: 1,
-    img: blog1,
+    img: "/img/blog/1.png",
     category: "Fashion",
     title: "Clothes Retail KPIs 2024 Guide for Clothes Executives.",
-    content: "Discover the essential KPIs every clothing executive should track in 2024. From sales per square foot to inventory turnover, this guide covers the metrics that drive retail success and how to leverage them for growth.",
     author: "Mr Admin",
     date: "Apr 06, 2024",
   },
   {
     id: 2,
-    img: blog2,
+    img: "/img2/blog/2.png",
     category: "Clothes",
     title: "Curbside Fashion Trends: How to Win the Pickup Battle.",
-    content: "Explore the latest curbside fashion trends and learn strategies to enhance your pickup experience. Stay ahead of the competition by offering seamless, stylish, and convenient curbside solutions for your customers.",
     author: "Mr Robin",
     date: "Jan 18, 2024",
   },
   {
     id: 3,
-    img: blog3,
+    img: "/img2/blog/3.png",
     category: "Shoes",
     title: "EBT Vendors: Claim Your Share of SNAP Online Revenue.",
-    content: "A comprehensive look at how shoe retailers can tap into SNAP online revenue by becoming EBT vendors. Understand the requirements, benefits, and steps to expand your customer base in 2024.",
     author: "Mr Selsa",
     date: "Feb 10, 2024",
   },
   {
     id: 4,
-    img: blog4,
+    img: "/img2/blog/4.png",
     category: "Electronics",
     title: "Fashion Tech: Blending Style and Innovation in 2024.",
-    content: "Fashion meets technology in 2024. Discover how wearable tech, smart fabrics, and innovative designs are transforming the electronics and fashion industries for both brands and consumers.",
     author: "Mr Pawar",
     date: "Mar 15, 2024",
   },
   {
     id: 5,
-    img: blog5,
+    img: "/img2/blog/5.png",
     category: "Accessories",
     title: "Sustainable Fashion: Eco-Friendly Choices for 2024.",
-    content: "Learn about the top eco-friendly accessories and sustainable fashion choices for 2024. This article highlights brands, materials, and practices making a positive impact on the environment.",
     author: "Ms Green",
     date: "May 01, 2024",
   }
