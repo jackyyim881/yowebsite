@@ -140,12 +140,14 @@ const CheckoutPage = () => {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div
-              className={`flex flex-col items-center ${currentStep >= 1 ? "text-pink-500" : "text-gray-400"
-                }`}
+              className={`flex flex-col items-center ${
+                currentStep >= 1 ? "text-pink-500" : "text-gray-400"
+              }`}
             >
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${currentStep >= 1 ? "bg-[#F98D79] text-white" : "bg-gray-200"
-                  }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
+                  currentStep >= 1 ? "bg-[#F98D79] text-white" : "bg-gray-200"
+                }`}
               >
                 <ShoppingBag className="w-5 h-5 " />
               </div>
@@ -153,17 +155,20 @@ const CheckoutPage = () => {
             </div>
 
             <div
-              className={`flex-1 h-1 mx-4 ${currentStep >= 2 ? "bg-[#F98D79]" : "bg-gray-200"
-                }`}
+              className={`flex-1 h-1 mx-4 ${
+                currentStep >= 2 ? "bg-[#F98D79]" : "bg-gray-200"
+              }`}
             />
 
             <div
-              className={`flex flex-col items-center ${currentStep >= 2 ? "text-pink-500" : "text-gray-400"
-                }`}
+              className={`flex flex-col items-center ${
+                currentStep >= 2 ? "text-pink-500" : "text-gray-400"
+              }`}
             >
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${currentStep >= 2 ? "bg-[#F98D79] text-white" : "bg-gray-200"
-                  }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
+                  currentStep >= 2 ? "bg-[#F98D79] text-white" : "bg-gray-200"
+                }`}
               >
                 {currentStep > 2 ? (
                   <Check className="w-5 h-5" />
@@ -175,17 +180,20 @@ const CheckoutPage = () => {
             </div>
 
             <div
-              className={`flex-1 h-1 mx-4 ${currentStep >= 3 ? "bg-[#F98D79]" : "bg-gray-200"
-                }`}
+              className={`flex-1 h-1 mx-4 ${
+                currentStep >= 3 ? "bg-[#F98D79]" : "bg-gray-200"
+              }`}
             />
 
             <div
-              className={`flex flex-col items-center ${currentStep >= 3 ? "text-pink-500" : "text-gray-400"
-                }`}
+              className={`flex flex-col items-center ${
+                currentStep >= 3 ? "text-pink-500" : "text-gray-400"
+              }`}
             >
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${currentStep >= 3 ? "bg-[#F98D79] text-white" : "bg-gray-200"
-                  }`}
+                className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${
+                  currentStep >= 3 ? "bg-[#F98D79] text-white" : "bg-gray-200"
+                }`}
               >
                 {currentStep > 3 ? (
                   <Check className="w-5 h-5" />
@@ -215,13 +223,6 @@ const CheckoutPage = () => {
 
                     return (
                       <div key={item.id} className="flex items-center">
-                        <div className="w-16 h-16 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
-                          <img
-                            src={item.img}
-                            alt={item.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
                         <div className="ml-4 flex-1">
                           <h3 className="font-medium text-sm">{item.name}</h3>
                           <p className="text-xs text-gray-500">
@@ -635,10 +636,11 @@ const CheckoutPage = () => {
                   <button
                     type="submit"
                     disabled={isProcessing}
-                    className={`flex items-center px-8 py-3 ${isProcessing
-                      ? "bg-gray-400"
-                      : "bg-[#F98D79] hover:bg-pink-600"
-                      } text-white rounded-full transition min-w-[160px] justify-center`}
+                    className={`flex items-center px-8 py-3 ${
+                      isProcessing
+                        ? "bg-gray-400"
+                        : "bg-[#F98D79] hover:bg-pink-600"
+                    } text-white rounded-full transition min-w-[160px] justify-center`}
                   >
                     {isProcessing ? (
                       <span className="flex items-center">
@@ -691,13 +693,6 @@ const CheckoutPage = () => {
 
                   return (
                     <div key={item.id} className="flex items-center gap-3">
-                      <div className="w-10 h-10 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
-                        <img
-                          src={item.img}
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
                       <div className="flex-1 overflow-hidden">
                         <p className="text-xs truncate">{item.name}</p>
                         <p className="text-xs text-gray-500">

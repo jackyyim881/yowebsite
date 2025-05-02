@@ -58,18 +58,10 @@ const CartPage = () => {
                 >
                   {/* Product */}
                   <div className="md:col-span-6 flex items-center gap-4">
-                    <Link to={`/products/${item.id}`} className="block">
-                      <div className="w-20 h-20 flex-shrink-0 bg-gray-100 rounded overflow-hidden">
-                        <img
-                          src={item.img}
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </Link>
+                    <Link to={`/product/${item.id}`} className="block"></Link>
                     <div>
                       <Link
-                        to={`/products/${item.id}`}
+                        to={`/product/${item.id}`}
                         className={`font-medium hover:text-[#ffc3c3] ${brownText}`}
                       >
                         {item.name}
@@ -132,7 +124,9 @@ const CartPage = () => {
                   {/* Total */}
                   <div className="md:col-span-2 flex items-center justify-between md:justify-center">
                     <span className="md:hidden">Total:</span>
-                    <span className={`font-medium ${brownText}`}>${itemTotal.toFixed(2)}</span>
+                    <span className={`font-medium ${brownText}`}>
+                      ${itemTotal.toFixed(2)}
+                    </span>
                   </div>
                 </div>
               );
@@ -143,7 +137,9 @@ const CartPage = () => {
         {/* Order Summary */}
         <div className="lg:w-1/3">
           <div className={`border rounded-lg p-6 sticky top-6 bg-white  `}>
-            <h2 className={`text-xl font-semibold mb-4 ${brownText}`}>Order Summary</h2>
+            <h2 className={`text-xl font-semibold mb-4 ${brownText}`}>
+              Order Summary
+            </h2>
 
             <div className="space-y-2 mb-4">
               <div className="flex justify-between">

@@ -1,13 +1,6 @@
 import BannerSlider from "./BannerSlider";
 import CategoryScroll from "./CategoryScroll";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
-
 import img1 from "../img2/img1.png";
 import img3 from "../img2/img3.png";
 import img4 from "../img2/cloth.png";
@@ -200,23 +193,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="max-w-7xl mx-auto absolute">
-              <motion.div
-                className="absolute -top-[50px] -left-2 w-3 h-3 rounded-full bg-[#c9d8b7] shadow-xl"
-                style={{ boxShadow: "0 0 0 2px white, 0 0 0 4px #c9d8b740" }}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-              />
-              <motion.div
-                className="absolute right-3  w-3 h-3 rounded-full bg-[#e6a94e] shadow-xl"
-                style={{ boxShadow: "0 0 0 2px white, 0 0 0 4px #e6a94e40" }}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-              />
-            </div>
+
             {/* Card 3 - With profile image */}
             <div className="relative flex flex-col items-center">
               {/* Profile image */}
